@@ -11,6 +11,7 @@ public class Order {
 	private Date moment;
 	private OrderStatus status;
 	private List<OrdemItem> items = new ArrayList<>();
+	private List<Cliente> cliente = new ArrayList<>();
 	
 	public Order() {
 		
@@ -47,6 +48,18 @@ public class Order {
 	
 	public void removeItems(OrdemItem items) {
 		this.items.remove(items);
+	}
+
+	public List<Cliente> getCliente() {
+		return cliente;
+	}
+
+	public void addCliente(Cliente cliente) {
+		this.cliente.add(cliente);
+	}
+	
+	public void removeCliente(Cliente cliente) {
+		this.cliente.remove(cliente);
 	}
 	
 	public Double Total() {
