@@ -42,4 +42,7 @@ public class Cliente {
 		this.birthDate = birthDate;
 	}
 	
+	public String toString() {
+		return getName() + " (" + getBirthDate() + ") - " + getEmail();
+	}
 }

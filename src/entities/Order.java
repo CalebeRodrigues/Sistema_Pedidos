@@ -62,6 +62,18 @@ public class Order {
 		this.cliente.remove(cliente);
 	}
 	
+	public String toString() {
+		
+		StringBuilder resumo = new StringBuilder();
+		resumo.append("Momento pedido: " + getMoment());
+		resumo.append("\nStatus pedido: " + getStatus());
+		resumo.append("\nCliente: " + getCliente().toString());
+		resumo.append("\nItem(s) pedido(s): ");
+		resumo.append("\n" + getItems().toString());
+		
+		return resumo.toString();
+	}
+	
 	public Double Total() {
 		Double total = 0.0;
 		for(OrdemItem x : items) {

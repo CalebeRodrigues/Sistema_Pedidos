@@ -15,11 +15,12 @@ import entities.enums.OrderStatus;
 public class Program {
 
 	public static void main(String[] args) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Locale.setDefault(Locale.US);
 		Scanner scanner = new Scanner(System.in);
 		Order order;
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
+		
 		System.out.print("Nome: ");
 		String nome = scanner.nextLine();
 		System.out.print("Email: ");
@@ -28,6 +29,8 @@ public class Program {
 		Date data = sdf.parse(scanner.next());
 
 		Date moment = new Date();
+		String moments = sdf2.format(moment);
+		moment = sdf2.parse(moments);
 		System.out.println("Inserir dados pedido: ");
 		System.out.print("Status: ");
 		String status = scanner.next();
@@ -40,8 +43,9 @@ public class Program {
 		int n = scanner.nextInt();
 
 		for (int i = 0; i < n; i++) {
-			System.out.println("Entre #"+i+" item: ");
+			System.out.println("Entre #"+(i+1)+" item: ");
 			System.out.print("Nome produto: ");
+			scanner.nextLine();
 			nome = scanner.nextLine();
 			System.out.print("Preço: ");
 			Double price = scanner.nextDouble();
@@ -55,6 +59,10 @@ public class Program {
 			
 			order.addItems(ordem);			
 		}
+		
+		System.out.println("Resumo pedido: ");
+		
+		System.out.print(order);
 
 		scanner.close();
 	}
