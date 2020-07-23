@@ -43,8 +43,7 @@ public class OrdemItem {
 		return getProduct().getName() + ", R$" 
 				+ String.format("%.2f", price) 
 				+ ", Quantidade:" + getQuantity()
-				+ ", SubTotal: R$"+ String.format("%.2f", subTotal());
-			
+				+ ", SubTotal: R$"+ String.format("%.2f", subTotal()) + "\n";
 	}
 	
 	public Double subTotal() {

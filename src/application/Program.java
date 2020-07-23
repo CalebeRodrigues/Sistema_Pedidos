@@ -16,7 +16,7 @@ public class Program {
 
 	public static void main(String[] args) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		
 		Locale.setDefault(Locale.US);
 		Scanner scanner = new Scanner(System.in);
 		Order order;
@@ -29,8 +29,6 @@ public class Program {
 		Date data = sdf.parse(scanner.next());
 
 		Date moment = new Date();
-		String moments = sdf2.format(moment);
-		moment = sdf2.parse(moments);
 		System.out.println("Inserir dados pedido: ");
 		System.out.print("Status: ");
 		String status = scanner.next();
@@ -53,10 +51,8 @@ public class Program {
 			int quantidade = scanner.nextInt();
 			
 			Product product = new Product(nome, price);
-			OrdemItem ordem = new OrdemItem(quantidade, price);
-			
-			ordem.addProduct(product);
-			
+			OrdemItem ordem = new OrdemItem(quantidade, price, product);
+						
 			order.addItems(ordem);			
 		}
 		

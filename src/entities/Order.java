@@ -1,5 +1,6 @@
 package entities;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,7 @@ import entities.enums.OrderStatus;
 
 public class Order {
 
+	private SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	private Date moment;
 	private OrderStatus status;
 	private List<OrdemItem> items = new ArrayList<>();
@@ -65,11 +67,19 @@ public class Order {
 	public String toString() {
 		
 		StringBuilder resumo = new StringBuilder();
-		resumo.append("Momento pedido: " + getMoment());
+		resumo.append("Momento pedido: " + formato.format(getMoment()));
 		resumo.append("\nStatus pedido: " + getStatus());
 		resumo.append("\nCliente: " + getCliente().toString());
 		resumo.append("\nItem(s) pedido(s): ");
 		resumo.append("\n" + getItems().toString());
+		
+		Double total = 0.0;
+		
+		for (OrdemItem x : items) {
+			total += x.subTotal();
+		}
+		
+		resumo.append("\nPreço total: R$" + String.format("%.2f", total));
 		
 		return resumo.toString();
 	}
